@@ -1,0 +1,8 @@
+ffmpeg -f alsa -ac 1 -i plughw:0,0 -acodec aac -crf 18 -y -ab 8k -codec libmp3lame -f mp3 - | ffplay -
+
+
+ALternative:
+arecord -f U8 uncompressed.mp3 (uncompressed)
+arecord -f U8 - | ffmpeg -i - -crf 18 -y -ab 32k -codec libmp3lame -f mp3 compressed32.mp3 (32k compressed)
+arecord -f U8 - | ffmpeg -i - -crf 18 -y -ab 8k -codec libmp3lame -f mp3 compressed8.mp3 (8k compressed)
+
